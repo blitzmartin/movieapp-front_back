@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+  }
+
+  .container {
+    margin: 10% auto;
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  .container h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    border: 1px solid rgba(252, 252, 252, 0.4);
+    background-color: rgba(120, 47, 47, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    font-family: "Source Sans Pro", sans-serif;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+  }
+  
+  button {
+    appearance: none;
+    outline: 0;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    color: rgb(235, 33, 44);
+    border-radius: 3px;
+    width: 250px;
+    font-size: 18px;
+  }
+
+  button:hover {
+    background-color: rgb(235, 33, 44);
+    color: white;
+  }
+  
+  .registerMsg {
+    color:rgb(235, 33, 44);
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  

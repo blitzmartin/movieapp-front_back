@@ -1,0 +1,14 @@
+.notFoundWrapper {
+    margin: 5rem auto;
+    text-align: center;
+}
+
+.notFoundWrapper h1 {
+    color:#FF0000;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.notFoundWrapper h3 {
+    font-size: 2.5rem;
+}

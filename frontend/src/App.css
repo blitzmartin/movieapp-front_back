@@ -1,0 +1,108 @@
+::root {
+  --col-light: #fff;
+  --col-dark: #282c34;
+  --col-accent: #eb212b;
+}
+
+*,
+* ::after,
+* ::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+.App {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*************** FOOTER ***************/
+
+.Header {
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header h1 {
+  color: white;
+  text-align: left;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+.nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:rgb(235, 33, 44);
+  border: 1px solid rgb(235, 33, 44);
+  display: flex;
+  justify-content: right;
+  font-size: 1.2rem;
+}
+
+.nav-bar li a {
+  display: block;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-bar li a.active {
+  background-color: white;
+  color: rgb(235, 33, 44);
+}
+
+/*************** FOOTER ***************/
+
+.Footer {
+  background-color: #282c34;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+
+.Footer h4 {
+  color: #ffffff;
+  margin: 0;
+}
+
+.FooterSpace {
+  clear: both;
+  height: 100px;
+}
+
+/*************** MOVIE GRID ***************/
+
+.movieGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: center;
+}
+
+.movieTile {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10px;
+}
+
+.movieTile h3 {
+  color: white;
+  background-color: #282c34;
+  text-align: center;
+  font-size: 1.6rem;
+  padding: 0.2rem 0.5rem 0 0.5rem;
+  margin-top: 1rem;
+}
