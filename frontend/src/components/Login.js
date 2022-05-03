@@ -5,7 +5,7 @@ import '../Login.css';
 
 export default function Login(props) {
 
-  const userObj = useContext(UserContext);
+  const userAuthObj = useContext(UserContext);
 
   const [userData, setUserData] = useState({
     username: "",
@@ -31,7 +31,7 @@ export default function Login(props) {
     });
 
     // for UserContext to catch the value in e.targe
-    userObj.setUserContextValue((prevValue) => {
+    userAuthObj.setUserAuth((prevValue) => {
       if (name === "username") {
         return {
           username: value,

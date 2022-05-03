@@ -14,15 +14,15 @@ export const UserContext = React.createContext();
 
 function App() {
 
-  const [userContextValue, setUserContextValue] = useState({
+  const [userAuth, setUserAuth] = useState({
     username: "",
     password: ""
   });
-  const userObj = { userContextValue, setUserContextValue };
+  const userAuthObj = { userAuth, setUserAuth };
 
   return (
     <>
-      <UserContext.Provider value={userObj}>
+      <UserContext.Provider value={userAuthObj}>
         <Router>
           <div className='Header'>
             <h1>The Movie App</h1>
