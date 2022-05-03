@@ -65,7 +65,7 @@ const findUser = async (req, res, next) => {
 
 
 // Logs user out of session
-function logout (req, res) {
+function logout (req, res, next) {
     req.logout();
     res.clearCookie("connect.sid", { path: "/" });
     req.session.destroy(function (err) {
@@ -74,7 +74,7 @@ function logout (req, res) {
       }
       res.status(200).send();
     });
-  };
+  }
 
 
 module.exports = { createUser, findUser, logout };
