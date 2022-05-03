@@ -36,8 +36,6 @@ export default function Login(props) {
     event.preventDefault();
   }
 
-  console.log(props)
-
   return (
     <div className="container">
       <h2>Please enter your credentials to login:</h2>
@@ -49,10 +47,10 @@ export default function Login(props) {
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
         <button type='submit' onClick={handleClick}>Login</button>
       </form>
-<div className='registerMsg' >
-<Link to="/auth/register">Not a member yet? Click here and register!</Link>
-</div>
-        
+      <div className='registerMsg' >
+        <Link to="/auth/register">Not a member yet? Click here and register!</Link>
+      </div>
+
 
     </div>
   );
