@@ -3,11 +3,9 @@ const router = express.Router();
 const authControllers = require('../controllers/authControllers'); 
 
 // /auth/login
-
 router.post('/login', isNotLoggedIn, authControllers.findUser);
 
 // /auth/register
-
 router.post('/register', isNotLoggedIn, authControllers.createUser);
 
 // /auth/logout

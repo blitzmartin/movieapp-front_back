@@ -5,7 +5,7 @@ const passport = require('passport')
 
 initialize(passport);
 
-// Creates user
+// REGISTER Creates user
 const createUser = async (req, res, next) => {
   
     const user = await userModel.findOne({ username: req.body.username });
@@ -31,21 +31,8 @@ const createUser = async (req, res, next) => {
     };
   };
 
-/* const createUser = async (req, res) =>{
-    try{
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        const newUser = await userModel.create({
-            username: req.body.username, 
-            password: hashedPassword 
-        });
-        res.send('Registered User');
-    } catch (err) {
-        console.log(err)
-    }
-};
- */
 
-// Checks if user has an account and if the password is correct
+// LOGIN Checks if user has an account and if the password is correct
 const findUser = async (req, res, next) => {
     passport.authenticate('local', function (err, user) {
         if (err || !user) {
@@ -64,7 +51,7 @@ const findUser = async (req, res, next) => {
 }
 
 
-// Logs user out of session
+// LOGOUT Logs user out of session
 function logout (req, res, next) {
     req.logout();
     res.clearCookie("connect.sid", { path: "/" });
