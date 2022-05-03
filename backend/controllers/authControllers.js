@@ -5,14 +5,33 @@ const passport = require('passport')
 
 initialize(passport);
 
-// Loads registration page
-async function showRegister (req, res) {
-    res.send('REGISTER PAGE');
-};
-
-
 // Creates user
-const createUser = async (req, res) =>{
+const createUser = async (req, res, next) => {
+  
+    const user = await userModel.findOne({ username: req.body.username });
+      if (user) {
+        return res.status(400).send({
+          message: `Username <${req.body.userename}> already taken`,
+        });
+      } else {
+      
+       try { 
+          const hashedPassword = await bcrypt.hash(req.body.password, 10)
+          const newuser = await userModel.create({
+            username: req.body.username,
+            password: hashedPassword
+          });
+             res.status(200).json({
+                username: newuser.username,
+             });
+       }catch(error) {
+          console.log(error)
+          next(error);
+      }
+    };
+  };
+
+/* const createUser = async (req, res) =>{
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         const newUser = await userModel.create({
@@ -24,34 +43,40 @@ const createUser = async (req, res) =>{
         console.log(err)
     }
 };
-
-// Loads login page
-const showLogin = function (req, res) {
-    res.send('LOGIN PAGE');
-}
+ */
 
 // Checks if user has an account and if the password is correct
-const findUser = async (req, res) => {
-    passport.authenticate('local',{
-        successRedirect: '/user',
-        failureRedirect: '/auth/login'
-    })(req, res);
+const findUser = async (req, res, next) => {
+    passport.authenticate('local', function (err, user) {
+        if (err || !user) {
+            res.status(401).send("Unauthorized");
+        } else {
+            req.login(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                res.status(200).json({
+                    username: user.username, 
+                });
+            });
+        }
+    })(req, res, next);
 }
 
 
 // Logs user out of session
-function logOut (req, res) {
+function logOut(req, res) {
     req.logOut
     res.clearCookie("connect.sid", { path: "/" });
-  
+
     req.session.destroy(function (err) {
-      if (err) {
-        return next(err);
-      }
-      res.redirect('/')
+        if (err) {
+            return next(err);
+        }
+        res.status(200).send();
     });
 }
 
 
 
-module.exports = { showRegister, createUser, showLogin, findUser, logOut };
+module.exports = { createUser, findUser, logOut };

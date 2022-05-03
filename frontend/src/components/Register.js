@@ -35,8 +35,6 @@ export default function Register(props) {
         event.preventDefault();
     }
 
-    console.log(props)
-
     return (
         <div className="container">
             <h2>Please enter your credentials to register:</h2>
@@ -46,8 +44,7 @@ export default function Register(props) {
 
                 <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
                 <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
-                <input type='password' placeholder='Confirm password' onChange={handleChange} />
-
+               
                 <button type='submit' onClick={handleClick}>Register</button>
             </form>
         </div>
