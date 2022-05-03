@@ -51,24 +51,3 @@ module.exports = { showUserIndex, showWatchlist, addToWatchlist, deleteFromWatch
 
 
 
-
-
-
-
-//FIRST APPROACH WITH ASYNC FUNCTION
-/* async function showHomepage (req, res) {
-    try{
-        const data = await moviesModel.find({}).select('poster');
-        res.render('index', {movies: data});
-    } catch(err) {
-        console.log(err)
-    }
-}; */
-
-//THIS IS TO FILTER OBJECT: moviesModel.find({}).select('poster')
-
-
-
-
-
-
