@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../App";
 import { Link } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
+
+  const userObj = useContext(UserContext);
 
   const [userData, setUserData] = useState({
     username: "",
@@ -26,6 +29,22 @@ export default function Login(props) {
         };
       }
     });
+
+    // for UserContext to catch the value in e.targe
+    userObj.setUserContextValue((prevValue) => {
+      if (name === "username") {
+        return {
+          username: value,
+          password: prevValue.password
+        };
+      } else if (name === "password") {
+        return {
+          username: prevValue.username,
+          password: value
+        };
+      }
+    });
+
   }
 
   function handleClick(event) {
