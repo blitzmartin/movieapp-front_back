@@ -29,7 +29,7 @@ export default function Main() {
     function searchHandler() {
         console.log(searchTitle)
         setSearchTitle("");
-      }
+    }
 
     useEffect(() => {
         fetch('/movies')
@@ -58,6 +58,7 @@ export default function Main() {
                 <select className='options' onChange={(e) => setCategory(e.target.value)}>
                     {categories.map((item) => <option value={item}>{item}</option>)}
                 </select>
+
                 <select className='options' onChange={(e) => setSortItem(e.target.value)}>
                     {sortBy.map((item) => <option value={item}>{item}</option>)}
                 </select>
@@ -74,7 +75,6 @@ export default function Main() {
                 })}
             </div>
         </>
-
     )
 }
 
