@@ -1,6 +1,6 @@
 import Buttons from './Buttons'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom';
+
 
 
 const posterBg = {
@@ -11,8 +11,6 @@ const posterBg = {
 
 function MovieTile({ movie }) {
 
-    const params = useParams();
-
     return (
         <div className='movieTile'>
             <h3>{movie.title}</h3>
@@ -22,7 +20,7 @@ function MovieTile({ movie }) {
             <p><em>{movie.category}</em></p>
             <p>{movie.rating}</p>
             <Link
-                to={`/${movie._id}`}
+                to={`/movies/${movie._id}`}
             >Read more...</Link>
         </div>
     )

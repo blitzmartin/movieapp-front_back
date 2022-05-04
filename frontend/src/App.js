@@ -52,7 +52,7 @@ function App() {
             <Route path='/' element={<Main />} />
             <Route path='/auth/login' element={<Login />} />
             <Route path='/auth/register' element={<Register />} />
-            <Route path='/:id' element={<OneMovie />} />
+            <Route path='/movies/:id' element={<OneMovie />} />
           </Routes>
         </Router>
         <Footer />

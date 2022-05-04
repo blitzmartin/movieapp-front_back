@@ -40,11 +40,9 @@ export default function Register(props) {
             <h2>Please enter your credentials to register:</h2>
 
 
-            <form>
-
+            <form action="/auth/register" method="post">
                 <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
                 <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
-               
                 <button type='submit' onClick={handleClick}>Register</button>
             </form>
         </div>

@@ -34,7 +34,6 @@ export default function Main() {
             .then(res => res.json())
             .then(data => {
                 setMovies(data);
-                console.log(data)
             })
             .catch(err => console.log(err))
         return

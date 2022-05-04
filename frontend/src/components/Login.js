@@ -60,8 +60,7 @@ export default function Login(props) {
       <h2>Please enter your credentials to login:</h2>
 
 
-      <form>
-
+      <form action="/auth/login" method="post">
         <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
         <button type='submit' onClick={handleClick}>Login</button>

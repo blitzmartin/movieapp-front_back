@@ -7,7 +7,7 @@ function showHomepage(req, res) {
     .then(data => {
       res.status(200).json(data)
     })
-    .catch((err) => console.errror(err.message))
+    .catch((err) => console.error(err.message))
 }
 
 //GET /movies/:id
@@ -17,7 +17,7 @@ const showOneMovie = function (req, res) {
     .then(data => {
       res.status(200).json(data)
     })
-    .catch((err) => console.errror(err.message))
+    .catch((err) => console.error(err.message))
 
 }
 
@@ -28,7 +28,7 @@ const showCategory = function (req, res) {
     .then(data => {
       res.status(200).json(data)
     })
-    .catch((err) => console.errror(err.message))
+    .catch((err) => console.error(err.message))
 }
 
 
