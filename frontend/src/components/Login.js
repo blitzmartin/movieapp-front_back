@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useNavigate } from "react";
 import { UserContext } from "../App";
 import { Link } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
 
+  const navigate = useNavigate();
   const userAuthObj = useContext(UserContext);
 
   const [userData, setUserData] = useState({
@@ -49,23 +50,25 @@ export default function Login(props) {
 
   function handleClick(event) {
 
+    
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        username: userData.username, 
-        password: userData.password})
+      body: JSON.stringify({
+        username: userData.username,
+        password: userData.password
+      })
     };
     fetch("/users/register", requestOptions)
-        .then(response => {
-           if (response.status === 200) {
-              navigate('/', { replace: true });
-           }
-           setUserData({
-            username: "",
-            password: ""
-          });
+      .then(response => {
+        if (response.status === 200) {
+          navigate('/', { replace: true });
+        }
+        setUserData({
+          username: "",
+          password: ""
         });
+      });
   }
 
   return (
@@ -76,7 +79,7 @@ export default function Login(props) {
       <form >
         <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
-        <button type='submit' onClick={handleClick}>Login</button>
+        <button onClick={handleClick}>Login</button>
       </form>
       <div className='registerMsg' >
         <Link to="/auth/register">Not a member yet? Click here and register!</Link>
