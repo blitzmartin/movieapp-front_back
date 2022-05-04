@@ -14,11 +14,11 @@ function showHomepage(req, res) {
 // Opens a page with movie info
 const showOneMovie = function (req, res) {
   moviesModel.findOne({ _id: req.params.id })
+    .then((res) => res.json())
     .then(data => {
       res.status(200).json(data)
     })
     .catch((err) => console.error(err.message))
-
 }
 
 // GET /movies/categories/:category

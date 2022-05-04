@@ -4,21 +4,20 @@ import { useParams } from 'react-router-dom';
 export default function OneMovie() {
 
     const params = useParams(); //should get the id
-    console.log(params);  
+    console.log(params); 
+    
+    const [movie, setMovies] = useState({}); //CURLY BRACES ARE CORRECT??
 
-    const [movie, setMovies] = useState({});
-
-    useEffect(() => {
+    useEffect((params) => {
         fetch(`/movies/${params}`)
             .then(res => res.json())
             .then(data => {
-                setMovies(data);
-                console.log(data)
+                setMovies(data);  //NOT WORKING, BUT GETTING THE RIGHT JSON IN LOCALHOST:5000
             })
             .catch(err => console.log(err))
         return
     }, [])
-    console.log(movie)
+
 
     return(
         <div className='movieTile'>
