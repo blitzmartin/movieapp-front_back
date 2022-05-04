@@ -1,11 +1,6 @@
 import MovieTile from './MovieTile'
 import React, { useState, useEffect } from 'react'
 import '../Filtering.css'
-import Searchbar from './Searchbar'
-//import movies from './movies'
-
-
-
 
 export default function Main() {
 
