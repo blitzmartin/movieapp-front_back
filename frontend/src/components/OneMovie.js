@@ -5,15 +5,16 @@ export default function OneMovie() {
 
     let params = useParams(); //should get the id
     params = JSON.stringify(params);
+    console.log(params); 
     params = JSON.parse(params);
-    console.log(params);
-    // now params is {"id":"6256e5d30579e7ee7d6243ec"}
-    console.log(`/movies/${params.id}`); 
+    console.log(params);   
+    const URL = `/movies/${params.id}`;
+    console.log(URL);
     
     const [movie, setMovies] = useState({}); //CURLY BRACES ARE CORRECT??
 
-    useEffect((params) => {
-        fetch(`/movies/${params.id}`)
+    useEffect(() => {
+        fetch(URL)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);  //NOT WORKING, BUT GETTING THE RIGHT JSON IN LOCALHOST:5000
