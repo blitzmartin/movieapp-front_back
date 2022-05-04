@@ -25,7 +25,7 @@ export default function Main() {
     const [searchTitle, setSearchTitle] = useState('')
     const [category, setCategory] = useState('')
     const [sortItem, setSortItem] = useState('')
-    const allMovies = [...movies]
+    const [allMovies, setAllMovies] = useState(movies)
 
     function searchHandler() {
         console.log(searchTitle)
@@ -41,7 +41,7 @@ export default function Main() {
             .then(res => res.json())
             .then(data => {
                 setMovies(data);
-                allMovies = [...data]
+                setAllMovies(data);
             })
             .catch(err => console.log(err))
         return
