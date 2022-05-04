@@ -18,8 +18,8 @@ const btn = {
 function Buttons() {
     return (
         <div style={btnDiv}>
-            <button style={btn}><i class="fa-solid fa-heart"></i></button>
-            <button style={btn}><i class="fa-solid fa-trash"></i></button>           
+            <button style={btn}><i className="fa-solid fa-heart"></i></button>
+            <button style={btn}><i className="fa-solid fa-trash"></i></button>           
         </div>
 
     )
