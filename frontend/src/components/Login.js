@@ -48,7 +48,7 @@ export default function Login(props) {
 
   }
 
-  function handleClick(event) {
+  function handleClick() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

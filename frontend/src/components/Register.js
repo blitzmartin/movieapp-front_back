@@ -30,7 +30,7 @@ export default function Register(props) {
         });
     }
 
-    function handleClick(event) {
+    function handleClick() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
