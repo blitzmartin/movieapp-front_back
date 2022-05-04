@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import { useNavigate  } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import '../Login.css';
 
 
@@ -54,13 +54,9 @@ export default function Register(props) {
     return (
         <div className="container">
             <h2>Please enter your credentials to register:</h2>
-
-
-            <form>
-                <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
-                <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
-                <button onClick={handleClick}>Register</button>
-            </form>
+            <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
+            <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
+            <button onClick={handleClick}>Register</button>
         </div>
     );
 }

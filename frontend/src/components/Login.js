@@ -1,6 +1,6 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../App";
-import { Link, useNavigate  } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
@@ -72,13 +72,9 @@ export default function Login(props) {
   return (
     <div className="container">
       <h2>Please enter your credentials to login:</h2>
-
-
-      <form >
-        <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
-        <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
-        <button onClick={handleClick}>Login</button>
-      </form>
+      <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
+      <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
+      <button onClick={handleClick}>Login</button>
       <div className='registerMsg' >
         <Link to="/auth/register">Not a member yet? Click here and register!</Link>
       </div>
