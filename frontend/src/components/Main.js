@@ -25,6 +25,7 @@ export default function Main() {
     const [searchTitle, setSearchTitle] = useState('')
     const [category, setCategory] = useState('')
     const [sortItem, setSortItem] = useState('')
+    const allMovies = [...movies]
 
     function searchHandler() {
         console.log(searchTitle)
@@ -32,14 +33,28 @@ export default function Main() {
     }
 
     useEffect(() => {
+        getAllMovies();
+    }, [])
+
+    function getAllMovies() {
         fetch('/movies')
             .then(res => res.json())
             .then(data => {
                 setMovies(data);
+                allMovies = [...data]
             })
             .catch(err => console.log(err))
         return
-    }, [])
+    }
+
+    useEffect(() => {
+        if (category !== "Category") {
+            const filterByCategory = movies.filter((item) => item.category === category);
+            setMovies(filterByCategory)
+        } else {
+            setMovies(allMovies);
+        }
+    }, [category])
 
     return (
         <>
@@ -66,12 +81,12 @@ export default function Main() {
 
             <div className='movieGrid'>
                 {movies.map((item) => {
-                        return (
-                            <MovieTile
-                                key={item._id}
-                                movie={item}
-                            />
-                        )
+                    return (
+                        <MovieTile
+                            key={item._id}
+                            movie={item}
+                        />
+                    )
                 })}
             </div>
         </>

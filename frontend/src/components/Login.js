@@ -48,11 +48,24 @@ export default function Login(props) {
   }
 
   function handleClick(event) {
-    setUserData({
-      username: "",
-      password: ""
-    });
-    event.preventDefault();
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        username: userData.username, 
+        password: userData.password})
+    };
+    fetch("/users/register", requestOptions)
+        .then(response => {
+           if (response.status === 200) {
+              navigate('/login', { replace: true });
+           }
+           setUserData({
+            username: "",
+            password: ""
+          });
+        });
   }
 
   return (
@@ -60,7 +73,7 @@ export default function Login(props) {
       <h2>Please enter your credentials to login:</h2>
 
 
-      <form action="/auth/login" method="post">
+      <form >
         <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
         <button type='submit' onClick={handleClick}>Login</button>
