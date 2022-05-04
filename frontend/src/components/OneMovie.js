@@ -5,33 +5,44 @@ export default function OneMovie() {
 
     let params = useParams(); //should get the id
     params = JSON.stringify(params);
-    console.log(params); 
+    console.log(params);
     params = JSON.parse(params);
-    console.log(params);   
+    console.log(params);
     const URL = `/movies/${params.id}`;
     console.log(URL);
-    
-    const [movie, setMovies] = useState({}); //CURLY BRACES ARE CORRECT??
 
-    useEffect(() => {
+    const [movies, setMovies] = useState([]); //CURLY BRACES ARE CORRECT??
+
+    function getMovie() {
         fetch(URL)
             .then(res => res.json())
             .then(data => {
-                setMovies(data);  //NOT WORKING, BUT GETTING THE RIGHT JSON IN LOCALHOST:5000
+                setMovies(data);
+                console.log(data)
             })
             .catch(err => console.log(err))
         return
+    }
+
+    useEffect(() => {
+        getMovie();
     }, [])
 
 
-    return(
+    return (
         <div className='movieTile'>
-            <h3>{movie.title}</h3>
-            <img src={movie.poster} alt='movie-poster' />
-            <p>({movie.year})</p>
-            <p><em>{movie.category}</em></p>
-            <p>{movie.rating}</p>
-            <p>{movie.plot}</p>
+            {movies.map((item) => {
+                return (
+                    <div>
+                        <h3>{item.title}</h3>
+                        <img src={item.poster} alt='movie-poster' />
+                        <p>({item.year})</p>
+                        <p><em>{item.category}</em></p>
+                        <p>{item.rating}</p>
+                        <p>{item.plot}</p>
+                    </div>
+                )
+            })}
         </div>
-    )    
+    )
 }
