@@ -9,7 +9,7 @@ router.post('/login', isNotLoggedIn, authControllers.findUser);
 router.post('/register', isNotLoggedIn, authControllers.createUser);
 
 // /auth/logout
-router.delete('/logout', isLoggedIn,  authControllers.logout);
+router.post('/logout', isLoggedIn,  authControllers.logout);
 
 
 function isLoggedIn(req, res, next) {
