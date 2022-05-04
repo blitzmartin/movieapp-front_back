@@ -3,8 +3,12 @@ import { useParams } from 'react-router-dom';
 
 export default function OneMovie() {
 
-    const params = useParams(); //should get the id
-    console.log(params); 
+    let params = useParams(); //should get the id
+    params = JSON.stringify(params);
+    params = JSON.parse(params);
+    console.log(params);
+    // now params is {"id":"6256e5d30579e7ee7d6243ec"}
+    console.log(`/movies/${params.id}`); 
     
     const [movie, setMovies] = useState({}); //CURLY BRACES ARE CORRECT??
 
