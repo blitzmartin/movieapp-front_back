@@ -13,7 +13,7 @@ export default function OneMovie() {
     const [movie, setMovies] = useState({}); //CURLY BRACES ARE CORRECT??
 
     useEffect((params) => {
-        fetch(`/movies/${params}`)
+        fetch(`/movies/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);  //NOT WORKING, BUT GETTING THE RIGHT JSON IN LOCALHOST:5000
