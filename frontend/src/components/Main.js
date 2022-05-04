@@ -1,7 +1,6 @@
 import MovieTile from './MovieTile'
 import React, { useState, useEffect } from 'react'
 import '../Filtering.css'
-import DropdownMenu from './DropdownMenu'
 import Searchbar from './Searchbar'
 //import movies from './movies'
 
@@ -19,7 +18,7 @@ export default function Main() {
         "Comedy",
         "Adventure"
     ];
-    
+
     const sortBy = [
         "Sort by...",
         "Title",
@@ -28,6 +27,14 @@ export default function Main() {
     ];
 
     const [movies, setMovies] = useState([]);
+    const [searchTitle, setSearchTitle] = useState('')
+    const [category, setCategory] = useState('')
+    const [sortItem, setSortItem] = useState('')
+
+    function searchHandler() {
+        console.log(searchTitle)
+        setSearchTitle("");
+      }
 
     useEffect(() => {
         fetch('/movies')
@@ -41,21 +48,36 @@ export default function Main() {
 
     return (
         <>
-         <div className='Filtering'>
-            <Searchbar />
-            <DropdownMenu options={categories} />
-            <DropdownMenu options={sortBy} />
-        </div>
-        <div className='movieGrid'>
-            {movies.map((item) => {
-                return (
-                    <MovieTile
-                        key = {item._id}
-                        movie = {item}
+            <div className='Filtering'>
+                <>
+                    <input
+                        className='search'
+                        type="text"
+                        placeholder="Search movie..."
+                        value={searchTitle}
+                        onChange={(e) => setSearchTitle(e.target.value)}
                     />
-                )
-            })}
-        </div>
+                    <button className="searchBtn" onClick={searchHandler}>Search</button>
+                </>
+
+                <select className='options' onChange={(e) => setCategory(e.target.value)}>
+                    {categories.map((item) => <option value={item}>{item}</option>)}
+                </select>
+                <select className='options' onChange={(e) => setSortItem(e.target.value)}>
+                    {sortBy.map((item) => <option value={item}>{item}</option>)}
+                </select>
+            </div>
+
+            <div className='movieGrid'>
+                {movies.map((item) => {
+                        return (
+                            <MovieTile
+                                key={item._id}
+                                movie={item}
+                            />
+                        )
+                })}
+            </div>
         </>
 
     )
