@@ -4,10 +4,7 @@ import { useParams } from 'react-router-dom';
 export default function OneMovie() {
 
     let params = useParams(); 
-    params = JSON.stringify(params);  // {"id": "6256e5d30579e7ee7d6243f5"}
-    console.log(params);
-    params = JSON.parse(params);  // {id: 6256e5d30579e7ee7d6243f5}
-    console.log(params);
+
     const URL = `/movies/${params.id}`;  // /movies/6256e5d30579e7ee7d6243f5
     console.log(URL);
 
