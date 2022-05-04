@@ -59,7 +59,7 @@ export default function Login(props) {
     fetch("/users/register", requestOptions)
         .then(response => {
            if (response.status === 200) {
-              navigate('/login', { replace: true });
+              navigate('/', { replace: true });
            }
            setUserData({
             username: "",

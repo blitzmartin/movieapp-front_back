@@ -28,12 +28,25 @@ export default function Register(props) {
     }
 
     function handleClick(event) {
-        setUserData({
-            username: "",
-            password: ""
-        });
-        event.preventDefault();
-    }
+
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            username: userData.username, 
+            password: userData.password})
+        };
+        fetch("/users/register", requestOptions)
+            .then(response => {
+               if (response.status === 200) {
+                  navigate('/', { replace: true });
+               }
+               setUserData({
+                username: "",
+                password: ""
+              });
+            });
+      }
 
     return (
         <div className="container">
