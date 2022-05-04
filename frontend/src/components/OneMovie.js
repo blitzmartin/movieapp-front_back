@@ -6,7 +6,7 @@ export default function OneMovie() {
     const params = useParams(); //should get the id
     console.log(params);  
 
-    const [movie, setMovies] = useState([]);
+    const [movie, setMovies] = useState({});
 
     useEffect(() => {
         fetch(`/movies/${params}`)
@@ -18,9 +18,10 @@ export default function OneMovie() {
             .catch(err => console.log(err))
         return
     }, [])
+    console.log(movie)
 
     return(
-        <div>
+        <div className='movieTile'>
             <h3>{movie.title}</h3>
             <img src={movie.poster} alt='movie-poster' />
             <p>({movie.year})</p>
