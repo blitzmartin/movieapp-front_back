@@ -47,6 +47,19 @@
     background-color: rgb(235, 33, 44);
     color: white;
   }
+
+  .logoutBtn {
+    background-color: #282c34;
+    border: 0;
+    padding: 1rem 0;
+    color: white;
+    border-radius: 3px;
+    font-size: 1rem;
+  }
+  .logoutBtn:hover {
+    background-color: white;
+    color: rgb(235, 33, 44);
+  }
   
   .registerMsg {
     color:rgb(235, 33, 44);

@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import { BrowserRouter as Router, NavLink, Routes, Route } from 'react-router-dom'
 import Main from './components/Main'
 import Login from './components/Login'
+import Logout from './components/Logout'
 import Register from "./components/Register";
 import NotFound from './components/NotFound'
 import OneMovie from './components/OneMovie'
@@ -43,6 +44,7 @@ function App() {
                   Login
                 </NavLink>
               </li>
+              <li><Logout /></li>
             </ul>
           </div>
 
