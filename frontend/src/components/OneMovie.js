@@ -31,18 +31,12 @@ export default function OneMovie() {
 
     return (
         <div className='movieTile'>
-            {movies.map((item) => {
-                return (
-                    <div>
-                        <h3>{item.title}</h3>
-                        <img src={item.poster} alt='movie-poster' />
-                        <p>({item.year})</p>
-                        <p><em>{item.category}</em></p>
-                        <p>{item.rating}</p>
-                        <p>{item.plot}</p>
-                    </div>
-                )
-            })}
+            <h3>{movies.title}</h3>
+            <img style={{width: "30%"}} src={movies.poster} alt='movie-poster' />
+            <p>({movies.year})</p>
+            <p><em>{movies.category}</em></p>
+            <p>{movies.rating}</p>
+            <p>{movies.plot}</p>
         </div>
     )
 }
