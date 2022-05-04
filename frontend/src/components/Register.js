@@ -1,4 +1,5 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState} from "react";
+import { useNavigate  } from 'react-router-dom'
 import '../Login.css';
 
 
@@ -38,9 +39,9 @@ export default function Register(props) {
                 password: userData.password
             })
         };
-        fetch("/users/register", requestOptions)
-            .then(response => {
-                if (response.status === 200) {
+        fetch("/auth/register", requestOptions)
+            .then(res => {
+                if (res.status === 200) {
                     navigate('/', { replace: true });
                 }
                 setUserData({

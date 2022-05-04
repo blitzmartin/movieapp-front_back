@@ -1,6 +1,6 @@
-import React, { useState, useContext, useNavigate } from "react";
+import React, { useState, useContext} from "react";
 import { UserContext } from "../App";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
@@ -57,9 +57,9 @@ export default function Login(props) {
         password: userData.password
       })
     };
-    fetch("/users/register", requestOptions)
-      .then(response => {
-        if (response.status === 200) {
+    fetch("/auth/login", requestOptions)
+      .then(res => {
+        if (res.status === 200) {
           navigate('/', { replace: true });
         }
         setUserData({
