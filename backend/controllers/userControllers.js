@@ -7,7 +7,7 @@ function showUserIndex (req, res) {
   .then(data => {
     res.json(data, req.user); 
   })
-  .catch((err) => console.errror(err.message))
+  .catch((err) => console.error(err.message))
 }
 
 // GET for /user/watchlist (private)
@@ -17,7 +17,7 @@ function showWatchlist (req, res) {
   .then(data => {
     res.json(data); 
   })
-  .catch((err) => console.errror(err.message))
+  .catch((err) => console.error(err.message))
 }
 
 // POST for /user/watchlist
@@ -28,7 +28,7 @@ const addToWatchlist = function (req, res) {
             console.log(data);
             res.status(200).json(data)
         })
-        .catch((err) => console.errror(err.message))
+        .catch((err) => console.error(err.message))
 }
 
 
@@ -41,7 +41,7 @@ const deleteFromWatchlist = function (req, res) {
         res.status(200).json(data)
       }
   })
-  .catch((err) => console.errror(err.message))
+  .catch((err) => console.error(err.message))
 }
 
 module.exports = { showUserIndex, showWatchlist, addToWatchlist, deleteFromWatchlist};

@@ -7,7 +7,6 @@ export default function Main() {
     const categories = [
         "Category",
         "Drama",
-        "Romantic",
         "Horror",
         "Animation",
         "Comedy",
