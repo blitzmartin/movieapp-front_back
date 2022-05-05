@@ -13,7 +13,11 @@ function MovieTile({ movie }) {
 
     return (
         <div  className='movieTile'>
-            <h3>{movie.title}</h3>
+            <h3>{movie.title.length > 12
+            ?`${(movie.title).substr(0, 12)}...`
+            :movie.title
+            }
+            </h3>
             <img style={posterBg} src={movie.poster} alt='movie-poster' />
             <p>({movie.year})</p>
             <p><em>{movie.category}</em></p>
