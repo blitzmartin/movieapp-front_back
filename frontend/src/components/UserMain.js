@@ -26,6 +26,7 @@ export const UserMain = () => {
     const [category, setCategory] = useState('')
     const [sortItem, setSortItem] = useState('')
     const [allMovies, setAllMovies] = useState(movies)
+  
 
     function searchHandler() {
         console.log(searchTitle)
@@ -87,7 +88,7 @@ export const UserMain = () => {
                                 key={item._id}
                                 movie={item}
                             />
-                            <Button btn="fa-solid fa-heart" />
+                            <Button />
                         </div>
 
                     )
