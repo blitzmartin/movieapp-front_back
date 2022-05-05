@@ -9,10 +9,7 @@ import Register from "./components/Register";
 import NotFound from './components/NotFound'
 import OneMovie from './components/OneMovie'
 import {UserMain} from './components/UserMain'
-
-
 export const UserContext = React.createContext();
-
 
 function App() {
 
@@ -20,11 +17,10 @@ function App() {
     username: "",
     password: ""
   });
-  const userAuth = { user, setUser };
 
   return (
     <>
-      <UserContext.Provider value={userAuth}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Router>
           <div className='Header'>
             <h1>The Movie App</h1>
@@ -56,7 +52,7 @@ function App() {
             <Route path='/auth/login' element={<Login />} />
             <Route path='/auth/register' element={<Register />} />
             <Route path='/movies/:id' element={<OneMovie />} />
-            <Route path='/user' element={<UserMain />} />
+            <Route path='/user' element={<UserMain /> } />
           </Routes>
         </Router>
         <Footer />
