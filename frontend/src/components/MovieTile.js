@@ -1,4 +1,4 @@
-import Buttons from './Buttons'
+import Button from './Button'
 import { Link } from 'react-router-dom'
 
 
@@ -12,10 +12,9 @@ const posterBg = {
 function MovieTile({ movie }) {
 
     return (
-        <div className='movieTile'>
+        <div  className='movieTile'>
             <h3>{movie.title}</h3>
             <img style={posterBg} src={movie.poster} alt='movie-poster' />
-            <Buttons />
             <p>({movie.year})</p>
             <p><em>{movie.category}</em></p>
             <p>{movie.rating}</p>

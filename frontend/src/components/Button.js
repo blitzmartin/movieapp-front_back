@@ -15,14 +15,15 @@ const btn = {
     borderRadius: '5px'
 }
 
-function Buttons() {
+function Buttons(props) {
     return (
         <div style={btnDiv}>
-            <button style={btn}><i className="fa-solid fa-heart"></i></button>
-            <button style={btn}><i className="fa-solid fa-trash"></i></button>           
+            <button style={btn}><i className={props.btn}></i></button>           
         </div>
 
     )
 }
 
 export default Buttons
+
+// fa-solid fa-heart fa-solid fa-trash

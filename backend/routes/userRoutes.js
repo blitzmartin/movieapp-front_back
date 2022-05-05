@@ -2,18 +2,9 @@ const express = require('express');
 const router = express.Router();
 const userControllers = require('../controllers/userControllers')
 
-router.get('/', isLoggedIn, userControllers.showUserIndex);
-router.get('/watchlist', isLoggedIn, userControllers.showWatchlist);
-router.post('/watchlist', isLoggedIn, userControllers.addToWatchlist);
-router.delete('/watchlist/:id', isLoggedIn, userControllers.deleteFromWatchlist);
-
-
-// SHOULD I LEAVE REDIRECT FOR AUTH?????
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next()
-    }
-    res.redirect('/')
-}
+router.get('/', userControllers.showUserIndex);
+router.get('/watchlist', userControllers.showWatchlist);
+router.post('/watchlist', userControllers.addToWatchlist);
+router.delete('/watchlist/:id', userControllers.deleteFromWatchlist);
 
 module.exports = router;

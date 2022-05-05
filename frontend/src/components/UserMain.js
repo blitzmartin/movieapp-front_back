@@ -1,8 +1,9 @@
 import MovieTile from './MovieTile'
 import React, { useState, useEffect } from 'react'
 import '../Filtering.css'
+import Button from './Button'
 
-export default function Main() {
+export const UserMain = () => {
 
     const categories = [
         "Category",
@@ -86,7 +87,9 @@ export default function Main() {
                                 key={item._id}
                                 movie={item}
                             />
+                            <Button btn="fa-solid fa-heart" />
                         </div>
+
                     )
                 })}
             </div>

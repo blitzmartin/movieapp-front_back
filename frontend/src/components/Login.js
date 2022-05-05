@@ -1,12 +1,12 @@
+
 import React, { useState, useContext } from "react";
 import { UserContext } from "../App";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
-
+  const userAuth = UserContext();
   const navigate = useNavigate();
-  const userAuthObj = useContext(UserContext);
 
   const [userData, setUserData] = useState({
     username: "",
@@ -32,7 +32,7 @@ export default function Login(props) {
     });
 
     // for UserContext to catch the value in e.targe
-    userAuthObj.setUserAuth((prevValue) => {
+    userAuth.setUser((prevValue) => {
       if (name === "username") {
         return {
           username: value,
@@ -60,7 +60,7 @@ export default function Login(props) {
     fetch("/auth/login", requestOptions)
       .then(res => {
         if (res.status === 200) {
-          navigate('/', { replace: true });
+          navigate('/user', { replace: true });
         }
         setUserData({
           username: "",
