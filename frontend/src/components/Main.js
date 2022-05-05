@@ -48,7 +48,7 @@ export default function Main() {
 
     useEffect(() => {
         if (category !== "Category") {
-            const filterByCategory = movies.filter((item) => item.category === category);
+            const filterByCategory = allMovies.filter((item) => item.category === category);
             setMovies(filterByCategory)
         } else {
             setMovies(allMovies);
