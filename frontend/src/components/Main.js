@@ -25,9 +25,19 @@ export default function Main() {
     const [category, setCategory] = useState('')
     const [sortItem, setSortItem] = useState('')
     const [allMovies, setAllMovies] = useState(movies)
+    const [btnValue, setBtnValue] = useState("Search")
 
     function searchHandler() {
-        console.log(searchTitle)
+
+            if (searchTitle !== "") {
+                const searchMovie = allMovies.filter((item) => item.title.toUpperCase() === searchTitle.toUpperCase());
+                setMovies(searchMovie);
+                setBtnValue("Reset");
+            } else {
+                setMovies(allMovies);
+                setBtnValue("Search");
+            }
+      //  console.log(searchTitle)
         setSearchTitle("");
     }
 
@@ -66,7 +76,7 @@ export default function Main() {
                         value={searchTitle}
                         onChange={(e) => setSearchTitle(e.target.value)}
                     />
-                    <button className="searchBtn" onClick={searchHandler}>Search</button>
+                    <button className="searchBtn" onClick={searchHandler}>{btnValue}</button>
                 </>
 
                 <select className='options' onChange={(e) => setCategory(e.target.value)}>
