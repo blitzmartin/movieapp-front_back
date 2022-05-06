@@ -1,14 +1,12 @@
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
 
   const { user, setUser, auth, setAuth } = useContext(UserContext);
   const navigate = useNavigate();
-  const location = useLocation();
-
 
   function handleChange(e) {
     const { value, name } = e.target; //destructuring
