@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import React, { useState } from 'react'
+import { useContext, useState } from "react";
+import { UserContext } from "../App";
 
 const btnDiv = {
     display: 'flex',
@@ -30,14 +31,15 @@ const posterBg = {
 function MovieTile({ movie }) {
     const [btnLogo, setBtnLogo] = useState("fa-regular fa-heart")
     const [value, setValue] = useState(false)
+    const { setUser } = useContext(UserContext);
 
     function handleClick() {
         if (value === false) {
             setBtnLogo("fa-solid fa-heart")
-            //add movie to watchlist
+            //add movie to favorite
         } else if (value === true) {
             setBtnLogo("fa-regular fa-heart")
-            //delete movie from watchlist
+            //delete movie from favorite
         }
         setValue(!value)
     }
