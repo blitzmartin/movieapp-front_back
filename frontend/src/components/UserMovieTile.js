@@ -54,7 +54,7 @@ function MovieTile({ movie }) {
                 });
         } else if (value === true) {
             setBtnLogo("fa-regular fa-heart")
-        /*     const requestOptions = {
+            const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -67,7 +67,7 @@ function MovieTile({ movie }) {
                     if (res.status === 200) {
                         navigate('/user', { replace: true });
                     }
-                }); */
+                });
         }
         setValue(!value)
 

@@ -1,4 +1,5 @@
 const moviesModel = require("../models/moviesModel");
+const userModel = require("../models/userModel");
 
 // GET for /user (private)
 // Loads homepage for logged user 
@@ -25,7 +26,7 @@ function showFavorite(req, res) {
 const addToFavorite = function (req, res) {
   userModel.findOne({ username: req.body.username })
     .then(user => {
-      user.favorite.push(movieid);
+      user.favorite.push(req.body.movieid);
       user.save()
       res.status(200).json(user)
     })
@@ -39,6 +40,8 @@ const deleteFromFavorite = function (req, res) {
   userModel.findOne({ username: req.body.username })
     .then(user => {
       if (!err) {
+        user.favorite.filter(item => item!==req.body.movieid);
+        user.save()
         res.status(200).json(user)
       }
     })
