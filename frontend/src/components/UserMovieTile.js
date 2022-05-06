@@ -34,8 +34,10 @@ function MovieTile({ movie }) {
     function handleClick() {
         if (value === false) {
             setBtnLogo("fa-solid fa-heart")
+            //add movie to watchlist
         } else if (value === true) {
             setBtnLogo("fa-regular fa-heart")
+            //delete movie from watchlist
         }
         setValue(!value)
     }
