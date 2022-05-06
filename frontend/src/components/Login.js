@@ -1,18 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import { Link, useNavigate } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
 
-  const { user, setUser, auth, setAuth } = useContext(UserContext);
+  const { setUser, setAuth } = useContext(UserContext);
+  const [userData, setUserData] = useState({
+    username:"", 
+    password:""
+  });
   const navigate = useNavigate();
-
   function handleChange(e) {
     const { value, name } = e.target; //destructuring
-
     // for UserContext to catch the value in e.targe
-    setUser((prevValue) => {
+    setUserData((prevValue) => {
       if (name === "username") {
         return {
           username: value,
@@ -33,18 +35,18 @@ export default function Login(props) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: user.username,
-        password: user.password
+        username: userData.username,
+        password: userData.password
       })
     };
     fetch("/auth/login", requestOptions)
       .then(res => {
         if (res.status === 200) {
           setAuth(true);
-          console.log(auth);
+          setUser(userData.username)
           navigate('/user', { replace: true });
         }
-        setUser({
+        setUserData({
           username: "",
           password: ""
         });
@@ -54,8 +56,8 @@ export default function Login(props) {
   return (
     <div className="container">
       <h2>Please enter your credentials to login:</h2>
-      <input type='text' name="username" placeholder='Username' onChange={handleChange} value={user.username} />
-      <input type='password' name='password' placeholder='Password' onChange={handleChange} value={user.password} />
+      <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
+      <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
       <button onClick={handleClick}>Login</button>
       <div className='registerMsg' >
         <Link to="/auth/register">Not a member yet? Click here and register!</Link>

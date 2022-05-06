@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import './App.css';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, NavLink, Routes, Route, Navigate, useLocation } from 'react-router-dom'
@@ -9,27 +9,16 @@ import Register from "./components/Register";
 import NotFound from './components/NotFound'
 import OneMovie from './components/OneMovie'
 import {UserMain} from './components/UserMain'
+import { RequireAuth } from "./contexts/RequireAuth";
 
 //UserContext to store credentials
 export const UserContext = React.createContext();
-
-//RequireAuth context var to check if user is logged in  NOT WORKING
-export const RequireAuth = ({children}) => {
-  const location = useLocation()
-  const { auth } = useContext(UserContext);
-  if(auth === false) {
-    return <Navigate to="/auth/login" state={{from: location}} replace />
-  }
-}
 
 
 function App() {
 
   //setting user credentials object to empty strings
-  const [user, setUser] = useState({
-    username: "",
-    password: ""
-  });
+  const [user, setUser] = useState("");
 
   // boolean var to check if user is logged in
   const [auth, setAuth] = useState(false)
@@ -68,7 +57,7 @@ function App() {
             <Route path='/auth/login' element={<Login />} />
             <Route path='/auth/register' element={<Register />} />
             <Route path='/movies/:id' element={<OneMovie />} />
-            <Route path='/user' element={<Navigate><UserMain /></Navigate>} />
+            <Route path='/user' element={<RequireAuth><UserMain /></RequireAuth>} />
           </Routes>
         </Router>
         <Footer />

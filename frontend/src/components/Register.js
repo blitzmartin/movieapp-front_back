@@ -42,7 +42,7 @@ export default function Register(props) {
         fetch("/auth/register", requestOptions)
             .then(res => {
                 if (res.status === 200) {
-                    navigate('/', { replace: true });
+                    navigate('/auth/login', { replace: true });
                 }
                 setUserData({
                     username: "",
@@ -53,7 +53,7 @@ export default function Register(props) {
 
     return (
         <div className="container">
-            <h2>Please enter your credentials to register:</h2>
+            <h2>Register here:</h2>
             <input type='text' name="username" placeholder='Username' onChange={handleChange} value={userData.username} />
             <input type='password' name='password' placeholder='Password' onChange={handleChange} value={userData.password} />
             <button onClick={handleClick}>Register</button>

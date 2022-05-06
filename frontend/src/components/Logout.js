@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import '../Login.css';
 
 export default function Logout() {
-  const { auth, setAuth } = useContext(UserContext);
+  const { setUser, setAuth } = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleClick() {
@@ -17,7 +17,7 @@ export default function Logout() {
       .then(res => {
         if (res.status === 200) {
           setAuth(false);
-          console.log(auth);
+          setUser("");
           navigate('/auth/login', { replace: true });
         }
       });
