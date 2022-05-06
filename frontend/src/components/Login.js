@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { Link, useNavigate, } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import '../Login.css';
 
 export default function Login(props) {
-  const { user, setUser } = useContext(UserContext);
+
+  const { user, setUser, auth, setAuth } = useContext(UserContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
 
   function handleChange(e) {
@@ -25,8 +27,8 @@ export default function Login(props) {
         };
       }
     });
-
   }
+
 
   function handleClick() {
     const requestOptions = {
@@ -40,6 +42,8 @@ export default function Login(props) {
     fetch("/auth/login", requestOptions)
       .then(res => {
         if (res.status === 200) {
+          setAuth(true);
+          console.log(auth);
           navigate('/user', { replace: true });
         }
         setUser({
@@ -58,8 +62,6 @@ export default function Login(props) {
       <div className='registerMsg' >
         <Link to="/auth/register">Not a member yet? Click here and register!</Link>
       </div>
-
-
     </div>
   );
 }
