@@ -1,7 +1,6 @@
-import MovieTile from './MovieTile'
+import UserMovieTile from './UserMovieTile'
 import React, { useState, useEffect } from 'react'
 import '../Filtering.css'
-import Button from './Button'
 
 export const UserMain = () => {
 
@@ -82,11 +81,10 @@ export const UserMain = () => {
                 {movies.map((item) => {
                     return (
                         <div>
-                            <MovieTile
+                            <UserMovieTile
                                 key={item._id}
                                 movie={item}
                             />
-                            <Button />
                         </div>
 
                     )
