@@ -26,7 +26,6 @@ const addToFavorite = function (req, res) {
   userModel.findOne({ username: req.body.username })
     .then(user => {
       user.favorite.push(movieid);
-      console.log("added favorite", user.favorite)
       user.save()
       res.status(200).json(user)
     })
