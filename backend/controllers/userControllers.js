@@ -39,8 +39,7 @@ const addToFavorite = function (req, res) {
 const deleteFromFavorite = function (req, res) {
   userModel.findOne({ username: req.body.username })
     .then(user => {
-        const filtered = user.favorite.filter(item => item!==req.body.movieid);
-        user.favorite = [...filtered];
+        user.favorite.pull(req.body.movieid);;
         user.save()
         res.status(200).json(user)
     })
