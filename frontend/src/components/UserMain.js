@@ -14,17 +14,10 @@ export const UserMain = () => {
         "Adventure"
     ];
 
-    const sortBy = [
-        "Sort by...",
-        "Title",
-        "Rating",
-        "Year"
-    ];
 
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState('')
     const [category, setCategory] = useState('')
-    const [sortItem, setSortItem] = useState('')
     const [allMovies, setAllMovies] = useState(movies)
     const [btnValue, setBtnValue] = useState("Search")
 
@@ -82,10 +75,6 @@ export const UserMain = () => {
 
                 <select className='options' onChange={(e) => setCategory(e.target.value)}>
                     {categories.map((item) => <option value={item}>{item}</option>)}
-                </select>
-
-                <select className='options' onChange={(e) => setSortItem(e.target.value)}>
-                    {sortBy.map((item) => <option value={item}>{item}</option>)}
                 </select>
             </div>
 
