@@ -36,6 +36,8 @@ function MovieTile({ movie }) {
     function handleClick() {
         if (value === false) {
             setBtnLogo("fa-solid fa-heart")
+            console.log(user);
+            console.log(movie._id);
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
