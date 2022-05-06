@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
 
@@ -27,21 +27,49 @@ const posterBg = {
 }
 
 
-
 function MovieTile({ movie }) {
     const [btnLogo, setBtnLogo] = useState("fa-regular fa-heart")
     const [value, setValue] = useState(false)
-    const { setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     function handleClick() {
         if (value === false) {
             setBtnLogo("fa-solid fa-heart")
-            //add movie to favorite
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: user,
+                    movieid: movie._id
+                })
+            };
+            fetch("/user/addfavorite", requestOptions)
+                .then(res => {
+                    if (res.status === 200) {
+                        navigate('/user', { replace: true });
+                    }
+                });
         } else if (value === true) {
             setBtnLogo("fa-regular fa-heart")
-            //delete movie from favorite
+        /*     const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: user,
+                    movieid: movie._id
+                })
+            };
+            fetch("/user/deletefavorite", requestOptions)
+                .then(res => {
+                    if (res.status === 200) {
+                        navigate('/user', { replace: true });
+                    }
+                }); */
         }
         setValue(!value)
+
+
     }
 
     return (
@@ -61,7 +89,7 @@ function MovieTile({ movie }) {
             <Link
                 to={`/movies/${movie._id}`}
             >Read more...</Link>
-            
+
 
         </div>
     )
